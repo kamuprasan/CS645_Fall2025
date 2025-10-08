@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,10 +11,7 @@ import java.util.stream.Collectors;
 
 public class Cracker {
     public static final String SHADOW_SIMPLE= "shadow";
-    public static final String COMMON_PASSWD_FILE = "common-passwords-all.txt";
-
-    public static List<String> shadowSimpleList = new ArrayList<>();
-    public static Set<String> commonPasswdList = new HashSet<>();
+    public static final String COMMON_PASSWD_FILE = "common-passwords.txt";
 
     public List<String> readFile(String fileName) throws IOException {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(fileName);
@@ -41,9 +37,10 @@ public class Cracker {
     public static void main(String[] args) throws Exception {
         Cracker cracker = new Cracker();
         //read common password
-        commonPasswdList = new HashSet<>(cracker.readFile(COMMON_PASSWD_FILE));
+        Set<String> commonPasswdList = new HashSet<>(cracker.readFile(COMMON_PASSWD_FILE));
         //read SHADOW_SIMPLE
-        shadowSimpleList = cracker.readFile(SHADOW_SIMPLE);
+        List<String> shadowSimpleList = cracker.readFile(SHADOW_SIMPLE);
+
         for (String userRecord: shadowSimpleList) {
             String[] userArr = userRecord.split(":");
             String user = userArr[0];

@@ -3,23 +3,18 @@ package org.example;
 import java.io.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class SimpleCracker {
     public static final String SHADOW_SIMPLE= "shadow-simple.txt";
     public static final String COMMON_PASSWD_FILE = "common-passwords.txt";
-
-    public static List<String> shadowSimpleList = new ArrayList<>();
-    public static List<String> commonPasswdList = new ArrayList<>();
-
     private final MessageDigest messageDigest;
 
     public SimpleCracker() throws Exception{
         messageDigest = MessageDigest.getInstance("MD5");
     }
+
     public static String toHex(byte[] bytes){
         BigInteger bi = new BigInteger( 1, bytes);
         return String.format("%0" + (bytes.length << 1) +"X", bi);
@@ -46,9 +41,9 @@ public class SimpleCracker {
     public static void main(String[] args) throws Exception {
         SimpleCracker simpleCracker = new SimpleCracker();
         //read common password
-        commonPasswdList = simpleCracker.readFile(COMMON_PASSWD_FILE);
+        List<String> commonPasswdList = simpleCracker.readFile(COMMON_PASSWD_FILE);
         //read SHADOW_SIMPLE
-        shadowSimpleList = simpleCracker.readFile(SHADOW_SIMPLE);
+        List<String> shadowSimpleList = simpleCracker.readFile(SHADOW_SIMPLE);
         for (String userRecord: shadowSimpleList) {
             String[] userArr = userRecord.split(":");
             String user = userArr[0];
