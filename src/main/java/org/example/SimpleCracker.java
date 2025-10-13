@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//Team members: Kamakshi Prasanna, Carlos Pineda, Joe Park
 public class SimpleCracker {
     public static final String SHADOW_SIMPLE= "shadow-simple.txt";
     public static final String COMMON_PASSWD_FILE = "common-passwords.txt";

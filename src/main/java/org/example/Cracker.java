@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
+//Team members: Kamakshi Prasanna, Carlos Pineda, Joe Park
 public class Cracker {
     public static final String SHADOW_SIMPLE= "shadow";
     public static final String COMMON_PASSWD_FILE = "common-passwords.txt";
